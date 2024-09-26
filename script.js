@@ -2,6 +2,7 @@ document.getElementById('calculate-total').addEventListener('click', () => {
     const prices = document.querySelectorAll('.prices');
     let total = 0;
 
+    // Calculate the total price
     prices.forEach(price => {
         total += parseFloat(price.textContent); // Convert to float and add to total
     });
@@ -17,7 +18,7 @@ document.getElementById('calculate-total').addEventListener('click', () => {
     totalRow.classList.add('total-row');
 
     const totalCell = document.createElement('td');
-    totalCell.colSpan = 1; // Merge cells
+    totalCell.colSpan = 1; // Adjust to the number of columns if necessary
     totalCell.textContent = 'Total Price:';
 
     const totalPriceCell = document.createElement('td');
