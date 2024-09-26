@@ -3,35 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grofers Checkout</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Grocery Checkout</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
+
     <h1>Grocery List</h1>
-    <table id="grocery-table">
+
+    <table id="groceryTable">
         <thead>
             <tr>
-                <th>Item</th>
-                <th>Price</th>
+                <th class="item">Item</th>
+                <th class="prices">Price</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="item">Apples</td>
-                <td class="prices price" contenteditable="true">2.00</td>
+                <td class="item">Apple</td>
+                <td class="prices">1.50</td>
             </tr>
             <tr>
-                <td class="item">Bananas</td>
-                <td class="prices price" contenteditable="true">1.50</td>
+                <td class="item">Banana</td>
+                <td class="prices">0.75</td>
             </tr>
             <tr>
-                <td class="item">Cherries</td>
-                <td class="prices price" contenteditable="true">3.00</td>
+                <td class="item">Orange</td>
+                <td class="prices">1.00</td>
             </tr>
         </tbody>
     </table>
-    <button id="calculate-total">Calculate Total</button>
-    <div id="ans"></div>
-    <script src="scripts.js"></script>
+
+    <button id="calculateTotalBtn">Calculate Total Price</button>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
