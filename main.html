@@ -23,29 +23,24 @@
 
     <h1>Grocery List</h1>
 
-    <table id="groceryTable">
-        <thead>
-            <tr>
-                <th class="item">Item</th>
-                <th class="prices">Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="item">Apple</td>
-                <td class="prices" contenteditable="true">1.50</td>
-            </tr>
-            <tr>
-                <td class="item">Banana</td>
-                <td class="prices" contenteditable="true">0.75</td>
-            </tr>
-            <tr>
-                <td class="item">Orange</td>
-                <td class="prices" contenteditable="true">1.00</td>
-            </tr>
-        </tbody>
-    </table>
-
+<table id="grocery-table">
+    <tr>
+        <th>Item</th>
+        <th>Price</th>
+    </tr>
+    <tr class="item">
+        <td>Apple</td>
+        <td class="prices">2.50</td>
+    </tr>
+    <tr class="item">
+        <td>Banana</td>
+        <td class="prices">1.20</td>
+    </tr>
+    <tr class="item">
+        <td>Orange</td>
+        <td class="prices">3.00</td>
+    </tr>
+</table>
     <button id="calculateTotalBtn">Calculate Total Price</button>
 
     <div id="ans"></div> <!-- Area to display total price -->
