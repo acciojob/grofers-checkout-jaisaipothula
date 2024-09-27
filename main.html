@@ -5,46 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery Checkout</title>
     <style>
-        body {
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
     </style>
 </head>
 <body>
+    <table id="grocery-table">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        <tr class="item">
+            <td>Apple</td>
+            <td class="price" contenteditable="true">2.50</td>
+        </tr>
+        <tr class="item">
+            <td>Banana</td>
+            <td class="price" contenteditable="true">1.20</td>
+        </tr>
+        <tr class="item">
+            <td>Orange</td>
+            <td class="price" contenteditable="true">3.00</td>
+        </tr>
+        <tr class="item">
+            <td>Grapes</td>
+            <td class="price" contenteditable="true">4.50</td>
+        </tr>
+        <tr class="item">
+            <td>Pineapple</td>
+            <td class="price" contenteditable="true">5.00</td>
+        </tr>
+    </table>
+    <button id="calculate-total">Calculate Total</button>
+    <div id="ans"></div>
 
-    <h1>Grocery List</h1>
+    <script>
+        // Function to calculate total price and display it
+        document.getElementById('calculate-total').addEventListener('click', function() {
+            const priceElements = document.querySelectorAll('.price');
+            let total = 0;
 
-<table id="grocery-table">
-    <tr>
-        <th>Item</th>
-        <th>Price</th>
-    </tr>
-    <tr class="item">
-        <td>Apple</td>
-        <td class="prices">2.50</td>
-    </tr>
-    <tr class="item">
-        <td>Banana</td>
-        <td class="prices">1.20</td>
-    </tr>
-    <tr class="item">
-        <td>Orange</td>
-        <td class="prices">3.00</td>
-    </tr>
-</table>
-    <button id="calculateTotalBtn">Calculate Total Price</button>
+            priceElements.forEach(priceElement => {
+                const price = parseFloat(priceElement.textContent);
+                if (!isNaN(price)) {
+                    total += price;
+                }
+            });
 
-    <div id="ans"></div> <!-- Area to display total price -->
-
-    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+            // Display the total price in the #ans div
+            document.getElementById('ans').textContent = `Total: $${total.toFixed(2)}`;
+        });
+    </script>
 </body>
 </html>
