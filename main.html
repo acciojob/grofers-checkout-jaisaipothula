@@ -1,9 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery Checkout</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .price {
+            contenteditable: true; /* Make prices editable */
+        }
+    </style>
 </head>
 <body>
+    <h1>Grocery List</h1>
     <table id="groceryTable">
         <tr>
             <th>Item</th>
@@ -11,48 +28,31 @@
         </tr>
         <tr class="item">
             <td>Apples</td>
-            <td class="prices">1.50</td>
+            <td class="price">1.50</td>
         </tr>
         <tr class="item">
             <td>Bananas</td>
-            <td class="prices">2.00</td>
+            <td class="price">2.00</td>
         </tr>
         <tr class="item">
             <td>Oranges</td>
-            <td class="prices">3.00</td>
+            <td class="price">3.00</td>
         </tr>
     </table>
     <button onclick="calculateTotal()">Calculate Total</button>
+    <div id="ans"></div>
 
     <script>
         function calculateTotal() {
-            // Select all elements with the class "prices"
-            const prices = document.querySelectorAll('.prices');
-            
-            // Initialize total variable
+            const prices = document.querySelectorAll('.price');
             let total = 0;
 
-            // Loop through each price element and sum their values
             prices.forEach(price => {
-                total += parseFloat(price.innerText); // Convert string to float and add to total
+                total += parseFloat(price.innerText) || 0; // Convert string to float
             });
 
-            // Create a new row for the total
-            const table = document.getElementById('groceryTable');
-            const newRow = document.createElement('tr');
-            
-            // Create cells for the new row
-            const cell1 = document.createElement('td');
-            cell1.innerText = 'Total'; // Label for the total row
-            const cell2 = document.createElement('td');
-            cell2.innerText = total.toFixed(2); // Format total to 2 decimal places
-
-            // Append cells to the new row
-            newRow.appendChild(cell1);
-            newRow.appendChild(cell2);
-
-            // Append the new row to the table
-            table.appendChild(newRow);
+            // Display total in the #ans div
+            document.getElementById('ans').innerText = `Total: ${total.toFixed(2)}`;
         }
     </script>
 </body>
