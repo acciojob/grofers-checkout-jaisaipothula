@@ -1,60 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery Checkout</title>
-    <style>
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    </style>
 </head>
 <body>
-    <table id="grocery-table">
+    <table id="groceryTable">
         <tr>
             <th>Item</th>
             <th>Price</th>
         </tr>
         <tr class="item">
-            <td>Apple</td>
-            <td class="price" contenteditable="true">2.50</td>
+            <td>Apples</td>
+            <td class="prices">1.50</td>
         </tr>
         <tr class="item">
-            <td>Banana</td>
-            <td class="price" contenteditable="true">1.20</td>
+            <td>Bananas</td>
+            <td class="prices">2.00</td>
         </tr>
         <tr class="item">
-            <td>Orange</td>
-            <td class="price" contenteditable="true">3.00</td>
-        </tr>
-        <tr class="item">
-            <td>Grapes</td>
-            <td class="price" contenteditable="true">4.50</td>
-        </tr>
-        <tr class="item">
-            <td>Pineapple</td>
-            <td class="price" contenteditable="true">5.00</td>
+            <td>Oranges</td>
+            <td class="prices">3.00</td>
         </tr>
     </table>
-    <button id="calculate-total">Calculate Total</button>
-    <div id="ans"></div>
+    <button onclick="calculateTotal()">Calculate Total</button>
 
     <script>
-        // Function to calculate total price and display it
-        document.getElementById('calculate-total').addEventListener('click', function() {
-            const priceElements = document.querySelectorAll('.price');
+        function calculateTotal() {
+            // Select all elements with the class "prices"
+            const prices = document.querySelectorAll('.prices');
+            
+            // Initialize total variable
             let total = 0;
 
-            priceElements.forEach(priceElement => {
-                const price = parseFloat(priceElement.textContent);
-                if (!isNaN(price)) {
-                    total += price;
-                }
+            // Loop through each price element and sum their values
+            prices.forEach(price => {
+                total += parseFloat(price.innerText); // Convert string to float and add to total
             });
 
-            // Display the total price in the #ans div
-            document.getElementById('ans').textContent = `Total: $${total.toFixed(2)}`;
-        });
+            // Create a new row for the total
+            const table = document.getElementById('groceryTable');
+            const newRow = document.createElement('tr');
+            
+            // Create cells for the new row
+            const cell1 = document.createElement('td');
+            cell1.innerText = 'Total'; // Label for the total row
+            const cell2 = document.createElement('td');
+            cell2.innerText = total.toFixed(2); // Format total to 2 decimal places
+
+            // Append cells to the new row
+            newRow.appendChild(cell1);
+            newRow.appendChild(cell2);
+
+            // Append the new row to the table
+            table.appendChild(newRow);
+        }
     </script>
 </body>
 </html>
